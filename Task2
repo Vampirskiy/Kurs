@@ -1,0 +1,37 @@
+class cloch:
+    def __init__(self, w, h):
+        self.w = w
+        self.h = h
+
+    def square_polt(self):
+        return self.w / 6.5 + 0.5
+
+    def square_cost(self):
+        return self.h * 2 + 0.3
+
+    @property
+    def square_full(self):
+        return str(f'Общая площадь ткани: {(self.w / 6.5 + 0.5) + (self.h * 2 + 0.3)}')
+
+class Polt(cloch):
+    def __init__(self, w, h):
+        super().__init__(w, h)
+        self.a = round(self.w / 6.5 + 0.5)
+
+    def __str__(self):
+        return f'Площадь на польто {self.a}'
+
+
+class Cost(cloch):
+    def __init__(self, w, h):
+        super().__init__(w, h)
+        self.b = round(self.h * 2 + 0.3)
+
+    def __str__(self):
+        return f'Площадь на костюм {self.b}'
+
+cost = Cost(1.8, 1.8)
+polt = Polt(2, 2)
+print(cost)
+print(polt)
+print(cost.square_full)
