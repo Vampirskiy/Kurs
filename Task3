@@ -1,0 +1,19 @@
+class chisla:
+    def __init__(self, *args):
+        self.My_list = []
+
+    def proverka(self):
+        while True:
+            try:
+                My_el = int(input('Введите значения и нажимайте Enter - '))
+                self.My_list.append(My_el)
+                print(f'Cписок: {self.My_list} \n ')
+            except:
+                print(f"Недопустимое значение")
+                a = input(f'Продолжить? Y/N ')
+                if a == 'Y' or a == 'y':
+                    print(try_e.proverka())
+                else:
+                    return f'Программа закончена'
+try_e = chisla(0)
+print(try_e.proverka())
