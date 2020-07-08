@@ -1,0 +1,61 @@
+class sklad:
+
+    def __init__(self, name, price, quantity, vid, *args):
+        self.name = name
+        self.price = price
+        self.quantity = quantity
+        self.vid = vid
+        self.my_list_all = []
+        self.my_list = []
+        self.pozicion = {'Раздер': self.vid, 'Модель устройства': self.name, 'Цена за ед': self.price, 'Количество': self.quantity}
+
+    def __str__(self):
+        return f'Раздер {self.vid} {self.name} цена {self.price} количество {self.quantity}'
+
+    def opros(self):
+        try:
+             print(f'Раздел {self.vid}')
+             a = input(f'Введите наименование ')
+             b = int(input(f'Введите цену за ед '))
+             c = int(input(f'Введите количество '))
+             self.my_list.append({'Раздер': self.vid, 'Модель устройства': a, 'Цена за ед': b, 'Количество': c})
+             print(f'Текущий список -\n {self.my_list}')
+        except:AttributeError
+        print(f'Для выхода - Q, продолжение - Enter')
+        q = input()
+        if q == 'Q' or q == 'q':
+            return f'Выход'
+        return print(self.my_list_all)
+
+class Printer(sklad):
+    def __init__(self, name, price, quantity, *args):
+        super().__init__(name, price, quantity, *args)
+        self.vid = 'Принтер'
+
+    def print(self):
+        print(f'Текущий список -\n {self.my_list_all}')
+
+class Scanner(sklad):
+    def __init__(self, name, price, quantity, *args):
+        super().__init__(name, price, quantity, *args)
+        self.vid = 'Сканер'
+    def to_scan(self):
+        print(f'Текущий список -\n {self.my_list_all}')
+
+class Copier(sklad):
+    def __init__(self, name, price, quantity, *args):
+        super().__init__(name, price, quantity, *args)
+        self.vid = 'Копир'
+    def to_copier(self):
+        print(f'Текущий список -\n {self.my_list_all}')
+
+    def __add__(self):
+        self.my_list_all.append(self.my_list)
+        return self.my_list_all
+
+unit_1 = Printer(0, 0, 0, 0)
+print(unit_1.opros())
+unit_2 = Scanner(0, 0, 0, 0)
+print(unit_2.opros())
+unit_3 = Copier(0, 0, 0, 0)
+print(unit_3.opros())
