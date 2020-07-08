@@ -1,0 +1,36 @@
+class data:
+    def __init__(self, line):
+        self.line = str(line)
+
+    @classmethod
+    def extract(cls, line):
+        my_data = []
+        for i in line.split():
+            if i != '-':
+                my_data.append(i)
+        [day, month, year] = my_data
+        return int(day), int(month), int(year)
+
+    @staticmethod
+    def valid(day, month, year):
+        if 1 <= day <= 31:
+            if 1 <= month <= 12:
+                if 2021 >= year >= 0:
+                    return f'Выполнено'
+                else:
+                    return f'Введите другой год'
+            else:
+                return f'Введите другой месяц'
+        else:
+            return f'Введите другой день'
+    def __str__(self):
+        return f'Дата {data.extract(self.line)}'
+
+
+data_1 = data('09 - 01 - 2011')
+print(data_1)
+print(data.valid(8, 4, 2046))
+print(data_1.valid(2, 3, 2011))
+print(data.extract('07 - 08 - 2011'))
+print(data_1.extract('06 - 12 - 2020'))
+print(data.valid(1, 7, 2000))
