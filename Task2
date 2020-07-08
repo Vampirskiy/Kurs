@@ -1,0 +1,17 @@
+class delenie_null:
+    def __init__(self, delimoe, delitel):
+        self.delimoe = delimoe
+        self.delitel = delitel
+
+    @staticmethod
+    def div_null(delimoe, delitel):
+        try:
+            return (delimoe / delitel)
+        except:
+            return (f"Деление на ноль недопустимо")
+
+
+div = delenie_null(1, 1)
+print(delenie_null.div_null(60, 0))
+print(delenie_null.div_null(25, 0.7))
+print(div.div_null(27, 0))
